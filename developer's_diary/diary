@@ -1,0 +1,33 @@
+## Developer's Diary
+
+When I first saw the task, my immediate thought was that `Array.filter()`
+combined with `startsWith()` would be more than enough to get the job done.
+It seemed straightforward. But then I re-read the requirements and realized
+binary search was strictly required, not optional.
+
+The problem was — even though I studied algorithms back in university,
+I couldn't really recall the details when I needed them. So I went back
+to basics, started reading about binary search theory, watched some YouTube
+tutorials, and slowly it started coming back to me. It took more time than
+I expected just to get comfortable with the concept again.
+
+Once I understood the theory, my next struggle was figuring out where to
+even begin with the implementation. I knew what binary search does in general,
+but applying it to a prefix-matching problem felt like a different challenge.
+I wasn't sure how to find not just the first match, but also where the matches
+end. I got some direction from Claude which helped me think through the structure.
+
+The key insight that unlocked everything was the `nextPrefix` trick — if the
+prefix is `"ja"`, I increment the last character by one ASCII value to get `"jb"`.
+Since the array is sorted, every word starting with `"ja"` must sit alphabetically
+between `"ja"` and `"jb"`. So a second binary search on that upper bound gives
+me the right boundary cleanly, and I can just slice between the two boundaries.
+
+Being relatively new to JavaScript also added another layer of difficulty.
+Some syntax and built-in methods weren't second nature to me yet, so even
+translating the logic I had in my head into actual working code took extra
+effort and patience.
+
+But once everything clicked and the tests passed, it was genuinely satisfying.
+I feel like I now understand binary search on a much deeper level than I did
+after university — because this time I actually had to use it to solve a real problem.
