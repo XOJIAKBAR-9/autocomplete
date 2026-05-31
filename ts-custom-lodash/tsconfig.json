@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "rootDir": "./lib",
+    "outDir": "./dist",
+    "module": "system",
+    "target": "es2015",
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "removeComments": true,
+    "skipLibCheck": true
+  }
+}
