@@ -1,0 +1,5 @@
+Started with BaseBuilder thinking I'd share multiply and divide between the two child classes. Turns out both override them completely anyway since the logic is totally different — one does math, the other slices strings. So the base class ended up being pretty thin, just get() really doing any real work there.
+The ES5 inheritance syntax tripped me up a bit. Had to make sure to use Object.create(BaseBuilder.prototype) and then manually reset the constructor back — easy thing to forget and it silently breaks things if you don't.
+The remove method was straightforward once I remembered the task says no replace — just split and join does the same thing cleanly.
+Also spent a moment on divide for integers — Math.floor feels natural but it's actually wrong for negatives. Math.trunc is what "integer part" actually means, so went with that.
+Chaining is just return this on every method but it's the kind of thing where you forget it once, the whole chain breaks, and you spend five minutes confused.
