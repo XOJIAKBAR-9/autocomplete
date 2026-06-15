@@ -21,11 +21,12 @@ export async function task(data: DataItem[], signal?: AbortSignal): Promise<void
             console.info(`Skipped   : ${skipped}`);
         };
 
+        let isDone = false;
+
         const checkDone = () => {
-            if (currentIndex >= data.length && activeRequests === 0) {
-                printSummary();
-                resolve();
-            } else if (signal?.aborted && activeRequests === 0) {
+            if (isDone) return;
+            if ((currentIndex >= data.length || signal?.aborted) && activeRequests === 0) {
+                isDone = true;
                 printSummary();
                 resolve();
             }
@@ -38,7 +39,7 @@ export async function task(data: DataItem[], signal?: AbortSignal): Promise<void
             while (attempts < maxAttempts) {
                 attempts++;
                 try {
-                    const response = await fetch('http://localhost:3000/send', {
+                    const response = await fetch('http://127.0.0.1:3000/send', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(item),

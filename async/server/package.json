@@ -6,9 +6,6 @@
   "scripts": {
     "start": "ts-node index.ts"
   },
-  "engines": {
-    "node": ">=22.0.0"
-  },
   "dependencies": {
     "express": "^4.18.2"
   },

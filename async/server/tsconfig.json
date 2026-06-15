@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "strict": true,
+    "preserveConstEnums": true,
+    "noEmitOnError": true,
+    "sourceMap": true,
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "lib": ["esnext"],
+    "strictPropertyInitialization": false
+  },
+  "include": ["**/*.ts", "**/*.spec.ts"],
+  "exclude": ["node_modules", "dist/**"]
+}
