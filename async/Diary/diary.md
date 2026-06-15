@@ -6,3 +6,5 @@ Retry Logic: I wrapped the fetch call in a while (attempts < 3) loop. If the ser
 I noticed the severe penalty for using console.log. I had to make sure I relied exclusively on console.info, console.error, and console.warn to track the lifecycle of the items and print the final summary.
 Hurdle:
 Because of the server's concurrency limit (only 20 at a time) and the built-in delay (100ms–1100ms per request), the system physically cannot process all 3,000 items in 60 seconds. A 20-request concurrency limit × ~600ms average delay equals a maximum throughput of ~2,000 items. The task is mathematically impossible to finish! This "Aha!" moment changed my approach. Instead of optimizing for speed, I focused on resilience—ensuring that when the AbortSignal triggers, active requests finish gracefully, the queue halts, and the untouched items are accurately tallied as Skipped.
+
+Note: server.ts and tsconfig.json were left completely untouched as they are the provided boilerplate environment. All concurrency, retry, and timeout logic was implemented strictly inside index.ts and executor.ts.
