@@ -1,0 +1,7 @@
+Table Tests: I used test.each for the calculator table tests. It was a great approach because it made the code much shorter than writing out 7 separate test cases.
+Partial Mocking: I used jest.requireActual() to keep the real implementations of certain functions while only mocking the specific ones I needed. mocking means overriding or hijacking only the specific parts of a file that cause trouble in test.
+TypeScript Issues: I had red lines under test and expect because TypeScript didn't recognize Jest globals. I also had some syntax errors in my tsconfig.json (like trailing commas) and a warning about a deprecated baseUrl.
+Git Branching: I accidentally committed all my test files to the master branch instead of the basic-testing branch. When I tried to merge them over, Git threw a fatal: refusing to merge unrelated histories error, and then blocked me again because of an untracked .gitignore file.
+How I Worked Through It:
+Fixing TypeScript: I cleaned up tsconfig.json, removed the trailing comma, removed the deprecated baseUrl, and added "types": ["jest", "node"] so TypeScript would globally recognize my testing environment.
+I switched to my basic-testing branch, deleted the blocking .gitignore file using rm .gitignore, and used the --allow-unrelated-histories flag to successfully force the merge. Finally, I pushed my branch to GitHub to create the PR.
