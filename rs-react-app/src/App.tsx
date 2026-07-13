@@ -1,14 +1,9 @@
-import React from 'react';
-import ErrorBoundary from './components/ErrorBoundary';
-import Main from './components/Main';
+import { Component } from 'react';
+import Main from './components/Main'; // Or wherever your Main is located
 
-class App extends React.Component {
+class App extends Component {
   render() {
-    return (
-      <ErrorBoundary>
-        <Main />
-      </ErrorBoundary>
-    );
+    return <Main />;
   }
 }
 
