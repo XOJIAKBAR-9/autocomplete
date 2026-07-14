@@ -12,7 +12,7 @@ class Trie {
 
   insert(word: string, index: number): void {
     let current = this.root;
-    const lowerWord = word.toLowerCase(); // Navigate using lowercase
+    const lowerWord = word.toLowerCase();
     
     for (const char of lowerWord) {
       if (!current.children[char]) {
@@ -33,13 +33,12 @@ class Trie {
   }
 
   findWords(prefix: string, originalData: string[]): string[] {
-    // Safety check: instantly return empty array if input is garbage or empty
     if (!prefix || typeof prefix !== 'string') {
       return [];
     }
 
     let current = this.root;
-    const lowerPrefix = prefix.toLowerCase(); // Search using lowercase
+    const lowerPrefix = prefix.toLowerCase(); 
     
     for (const char of lowerPrefix) {
       if (!current.children[char]) {
