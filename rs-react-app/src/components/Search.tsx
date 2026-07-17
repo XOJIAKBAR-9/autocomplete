@@ -9,7 +9,6 @@ interface State {
 }
 
 class Search extends Component<Props, State> {
-  // We store this outside of state because changing it shouldn't trigger a re-render
   private lastSearchedTerm: string = '';
 
   constructor(props: Props) {
@@ -21,7 +20,7 @@ class Search extends Component<Props, State> {
     const savedTerm = localStorage.getItem('searchTerm') || '';
     if (savedTerm) {
       this.setState({ inputValue: savedTerm });
-      this.lastSearchedTerm = savedTerm; // Sync our tracker with local storage
+      this.lastSearchedTerm = savedTerm; 
     }
   }
 
@@ -30,14 +29,12 @@ class Search extends Component<Props, State> {
   };
 
   handleSearch = () => {
-    const trimmedTerm = this.state.inputValue.trim(); // Feature 5: Remove extra spaces
+    const trimmedTerm = this.state.inputValue.trim(); 
     
-    // Feature 5 & 6: If text hasn't changed, do NOTHING.
     if (trimmedTerm === this.lastSearchedTerm) {
       return; 
     }
 
-    // If it has changed, save it, update our tracker, and fetch data
     localStorage.setItem('searchTerm', trimmedTerm);
     this.lastSearchedTerm = trimmedTerm;
     this.props.onSearch(trimmedTerm);

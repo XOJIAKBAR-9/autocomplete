@@ -49,26 +49,22 @@ class Main extends Component<{}, State> {
 
     return (
       <div style={{ maxWidth: '800px', margin: '0 auto', padding: '20px', fontFamily: 'sans-serif' }}>
-        <Header /> {/* Feature 1: Clear page layout and decomposition */}
+        <Header /> 
         
         <Search onSearch={this.loadData} />
         
         <div style={{ border: '2px solid #333', padding: '20px', borderRadius: '8px', minHeight: '400px' }}>
           <h3 style={{ marginTop: 0 }}>Results</h3>
           
-          {/* Feature 7: Loading state */}
           {isLoading && <div>Loading data... ⏳</div>}
           
-          {/* Feature 8: Error handling */}
           {!isLoading && error && (
             <div style={{ color: 'red', fontWeight: 'bold' }}>Error: {error}</div>
           )}
           
-          {/* Feature 3 & 4: Displaying results */}
           {!isLoading && !error && <CardList items={items} />}
         </div>
 
-        {/* Feature 9: Test button for Error Boundary */}
         <button onClick={this.handleThrowError} style={{ marginTop: '20px', color: 'red' }}>
           Test Application Crash
         </button>
